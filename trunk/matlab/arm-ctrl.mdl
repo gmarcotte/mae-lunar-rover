@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.178"
+    ComputedModelVersion    "1.190"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -21,7 +21,7 @@ Model {
   MaxMDLFileLineLength	  120
   UserBdParams		  "PhysicalModelingChecksum;PhysicalModelingParameterChecksum;PhysicalModelingProducts"
   PhysicalModelingChecksum "3798164779"
-  PhysicalModelingParameterChecksum "2630034385"
+  PhysicalModelingParameterChecksum "3304771469"
   PhysicalModelingProducts "SimMechanics"
   Created		  "Fri Oct 16 22:39:49 2009"
   Creator		  "bill pang"
@@ -29,9 +29,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "marcotte"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 24 01:35:38 2009"
-  RTWModifiedTimeStamp	  180927317
-  ModelVersionFormat	  "1.%<AutoIncrement:178>"
+  LastModifiedDate	  "Tue Nov 24 05:33:24 2009"
+  RTWModifiedTimeStamp	  180941596
+  ModelVersionFormat	  "1.%<AutoIncrement:190>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -188,8 +188,8 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  InlineParams		  off
-	  UseIntDivNetSlope	  off
+	  InlineParams		  on
+	  UseIntDivNetSlope	  on
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
 	  BufferReuse		  on
@@ -584,7 +584,7 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      CurrentDlgPage	      "Simulation Target"
+      CurrentDlgPage	      "Optimization"
       ConfigPrmDlgPosition    " [ 200, 85, 1080, 715 ] "
     }
     PropName		    "ConfigurationSets"
@@ -746,10 +746,18 @@ Model {
       SaturateOnIntegerOverflow	on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      ToWorkspace
+      VariableName	      "simulink_output"
+      MaxDataPoints	      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+      FixptAsFi		      off
+    }
   }
   System {
     Name		    "arm"
-    Location		    [2, 80, 1331, 708]
+    Location		    [2, 72, 1347, 700]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -761,9 +769,9 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "156"
+    ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    82
+    SIDHighWatermark	    87
     Block {
       BlockType		      Reference
       Name		      "Anchor yaw"
@@ -1330,7 +1338,7 @@ Model {
       ClassName		      "InitialCondition"
       DialogClass	      "InitialConditionBlock"
       InitialConditions	      "P1$false$0$m$deg$0$m/s$deg/s#P2$false$0$m$deg$0$m/s$deg/s#P3$false$0$m$deg$0$m/s$deg/s#"
-      "R1$true$-180$m$deg$0$m/s$deg/s#R2$false$0$m$deg$0$m/s$deg/s#R3$false$0$m$deg$0$m/s$deg/s#S$false$0$m$deg$0$m/s$d"
+      "R1$true$-179$m$deg$0$m/s$deg/s#R2$false$0$m$deg$0$m/s$deg/s#R3$false$0$m$deg$0$m/s$deg/s#S$false$0$m$deg$0$m/s$d"
       "eg/s"
       P1PIC		      "0"
       P1VIC		      "0"
@@ -1338,7 +1346,7 @@ Model {
       P2VIC		      "0"
       P3PIC		      "0"
       P3VIC		      "0"
-      R1PIC		      "-180"
+      R1PIC		      "-179"
       R1VIC		      "0"
       R2PIC		      "0"
       R2VIC		      "0"
@@ -1352,7 +1360,7 @@ Model {
       Name		      "Joint Sensor"
       SID		      12
       Ports		      [0, 1, 0, 0, 0, 1]
-      Position		      [1855, 250, 1895, 290]
+      Position		      [1850, 250, 1890, 290]
       LibraryVersion	      "1.1"
       DialogController	      "MECH.DynMechDlgSource"
       SourceBlock	      "mblibv1/Sensors & \nActuators/Joint Sensor"
@@ -1999,7 +2007,7 @@ Model {
       Name		      "PID Controller"
       SID		      71
       Ports		      [1, 1]
-      Position		      [1035, 197, 1075, 233]
+      Position		      [1035, 217, 1075, 253]
       BlockMirror	      on
       LibraryVersion	      "1.762"
       DialogController	      "pidpack.PIDConfig.pidDDGCreate"
@@ -2030,9 +2038,9 @@ Model {
       ExternalReset	      "none"
       IgnoreLimit	      off
       ZeroCross		      on
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
+      LimitOutput	      on
+      UpperSaturationLimit    "28"
+      LowerSaturationLimit    "-28"
       LinearizeAsGain	      off
       AntiWindupMode	      "none"
       Kb		      "1"
@@ -2118,7 +2126,7 @@ Model {
       Name		      "PID Controller1"
       SID		      73
       Ports		      [1, 1]
-      Position		      [1290, 207, 1330, 243]
+      Position		      [1285, 212, 1325, 248]
       BlockMirror	      on
       LibraryVersion	      "1.762"
       DialogController	      "pidpack.PIDConfig.pidDDGCreate"
@@ -2149,9 +2157,9 @@ Model {
       ExternalReset	      "none"
       IgnoreLimit	      off
       ZeroCross		      on
-      LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
+      LimitOutput	      on
+      UpperSaturationLimit    "28"
+      LowerSaturationLimit    "-28"
       LinearizeAsGain	      off
       AntiWindupMode	      "none"
       Kb		      "1"
@@ -2269,8 +2277,8 @@ Model {
       IgnoreLimit	      off
       ZeroCross		      on
       LimitOutput	      off
-      UpperSaturationLimit    "inf"
-      LowerSaturationLimit    "-inf"
+      UpperSaturationLimit    "1000"
+      LowerSaturationLimit    "-1000"
       LinearizeAsGain	      off
       AntiWindupMode	      "none"
       Kb		      "1"
@@ -2566,74 +2574,6 @@ Model {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
       }
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope1"
-      SID		      35
-      Ports		      [1]
-      Position		      [835, 304, 865, 336]
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      Floating		      off
-      Location		      [1, 46, 1367, 737]
-      Open		      off
-      NumInputPorts	      "1"
-      ZoomMode		      "yonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      YMax		      "75"
-      SaveName		      "ScopeData1"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope2"
-      SID		      36
-      Ports		      [1]
-      Position		      [1175, 304, 1205, 336]
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      Floating		      off
-      Location		      [6, 57, 1283, 762]
-      Open		      off
-      NumInputPorts	      "1"
-      ZoomMode		      "yonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      YMin		      "-10"
-      YMax		      "80"
-      SaveName		      "ScopeData2"
-      DataFormat	      "StructureWithTime"
-      SampleTime	      "0"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope3"
-      SID		      37
-      Ports		      [1]
-      Position		      [1440, 344, 1470, 376]
-      BlockMirror	      on
-      NamePlacement	      "alternate"
-      Floating		      off
-      Location		      [6, 57, 1286, 762]
-      Open		      off
-      NumInputPorts	      "1"
-      ZoomMode		      "yonly"
-      List {
-	ListType		AxesTitles
-	axes1			"%<SignalLabel>"
-      }
-      YMin		      "-100"
-      YMax		      "100"
-      SaveName		      "ScopeData3"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
@@ -3005,7 +2945,7 @@ Model {
       SID		      44
       Tag		      "STV Subsys"
       Ports		      [0, 1]
-      Position		      [1854, 325, 1896, 400]
+      Position		      [1849, 325, 1891, 400]
       BlockRotation	      270
       CopyFcn		      "sigbuilder_block('copy');"
       DeleteFcn		      "sigbuilder_block('delete');"
@@ -3463,6 +3403,54 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      SID		      83
+      Ports		      [1]
+      Position		      [795, 305, 855, 335]
+      BlockMirror	      on
+      VariableName	      "anchorYaw"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Structure With Time"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      84
+      Ports		      [1]
+      Position		      [1150, 305, 1210, 335]
+      BlockMirror	      on
+      VariableName	      "neckPitch"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Structure With Time"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace2"
+      SID		      86
+      Ports		      [1]
+      Position		      [1410, 345, 1470, 375]
+      BlockMirror	      on
+      VariableName	      "armPitch"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Structure With Time"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace3"
+      SID		      87
+      Ports		      [1]
+      Position		      [1710, 405, 1770, 435]
+      BlockMirror	      on
+      VariableName	      "manipPitch"
+      MaxDataPoints	      "inf"
+      SampleTime	      "-1"
+      SaveFormat	      "Structure With Time"
+    }
+    Block {
       BlockType		      Reference
       Name		      "U_arm Pitch \nActuator"
       SID		      48
@@ -3659,8 +3647,8 @@ Model {
       ClassName		      "Ground"
       CoordPosition	      "[-10 -10 0]"
       CoordPositionUnits      "cm"
-      StateVectorMgrId	      "3"
-      MachineId		      "[4 0]"
+      StateVectorMgrId	      "0"
+      MachineId		      "[1 0]"
       ShowEnvPort	      on
     }
     Block {
@@ -4685,12 +4673,12 @@ Model {
       SrcPort		      1
       Points		      [10, 0; 0, 40]
       Branch {
-	Points			[0, 35]
-	DstBlock		"Scope1"
+	DstBlock		"Gain1"
 	DstPort			1
       }
       Branch {
-	DstBlock		"Gain1"
+	Points			[0, 35]
+	DstBlock		"To Workspace"
 	DstPort			1
       }
     }
@@ -4699,12 +4687,12 @@ Model {
       SrcPort		      1
       Points		      [10, 0; 0, 65]
       Branch {
-	Points			[0, 10]
-	DstBlock		"Scope2"
+	DstBlock		"Gain2"
 	DstPort			1
       }
       Branch {
-	DstBlock		"Gain2"
+	Points			[0, 10]
+	DstBlock		"To Workspace1"
 	DstPort			1
       }
     }
@@ -4720,7 +4708,7 @@ Model {
       LineType		      "Connection"
       SrcBlock		      "Joint Sensor3"
       SrcPort		      LConn1
-      Points		      [-35, 0; 0, -175; 80, 0; 0, -25]
+      Points		      [-30, 0; 0, -175; 75, 0; 0, -25]
       DstBlock		      "upper arm pitch"
       DstPort		      LConn2
     }
@@ -4914,6 +4902,7 @@ Model {
     Line {
       SrcBlock		      "PID Controller"
       SrcPort		      1
+      Points		      [0, -20]
       DstBlock		      "Neck \nActuator"
       DstPort		      1
     }
@@ -4927,7 +4916,7 @@ Model {
     Line {
       SrcBlock		      "Sum"
       SrcPort		      1
-      Points		      [0, -50]
+      Points		      [0, -30]
       DstBlock		      "PID Controller"
       DstPort		      1
     }
@@ -4955,14 +4944,13 @@ Model {
     Line {
       SrcBlock		      "Sum1"
       SrcPort		      1
-      Points		      [0, -45]
+      Points		      [0, -40]
       DstBlock		      "PID Controller1"
       DstPort		      1
     }
     Line {
       SrcBlock		      "PID Controller1"
       SrcPort		      1
-      Points		      [0, -50]
       DstBlock		      "U_arm Pitch \nActuator"
       DstPort		      1
     }
@@ -5003,7 +4991,7 @@ Model {
       }
       Branch {
 	Points			[0, 85]
-	DstBlock		"Scope3"
+	DstBlock		"To Workspace2"
 	DstPort			1
       }
     }
@@ -5011,7 +4999,7 @@ Model {
       LineType		      "Connection"
       SrcBlock		      "manipulator rotate"
       SrcPort		      LConn2
-      Points		      [-20, 0; 0, 195]
+      Points		      [-15, 0]
       DstBlock		      "Joint Sensor"
       DstPort		      LConn1
     }
@@ -5025,8 +5013,16 @@ Model {
     Line {
       SrcBlock		      "Joint Sensor"
       SrcPort		      1
-      DstBlock		      "Gain4"
-      DstPort		      1
+      Points		      [5, 0]
+      Branch {
+	DstBlock		"Gain4"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 150]
+	DstBlock		"To Workspace3"
+	DstPort			1
+      }
     }
     Line {
       SrcBlock		      "Gain4"
@@ -5037,7 +5033,7 @@ Model {
     Line {
       SrcBlock		      "Signal Builder3"
       SrcPort		      1
-      Points		      [0, -15; 95, 0]
+      Points		      [0, -15; 100, 0]
       DstBlock		      "Sum3"
       DstPort		      2
     }
@@ -5420,74 +5416,71 @@ MatData {
   }
   DataRecord {
     Tag			    DataTag8
-    Data		    "  %)30     .    L L   8    (     @         %    \"     $    !     0         %  0 %@    $   \"P    9W)I9"
+    Data		    "  %)30     .    P H   8    (     @         %    \"     $    !     0         %  0 %@    $   \"P    9W)I9"
     "%-E='1I;F<              &-H86YN96QS                  !A>&5S                        8V]M;6]N                     &1"
     "A=&%3970                   !D871A4V5T261X                :7-697)I9FEC871I;VY6:7-I8FQE '-B;V)J                     "
-    "  .    ,     8    (    !          %    \"     $    \"     0         0  ( ;VX   X   #0 P  !@    @    \"          4 "
-    "   (     0    $    !          4 !  *     0   &X   !X1&%T80      >41A=&$      '-T97!8      !S=&5P60      >4UI;@    "
-    "   'E-87@       !C;VQO<@      ;&EN95-T>6QE &QI;F57:61T: !L86)E;       ;W5T26YD97@     #@   &@    &    \"     8    "
-    "     !0    @    !    !P    $         \"0   #@                      !1         )$         N0        #E         /D  "
-    "      !$0 X   !H    !@    @    &          4    (     0    <    !          D    X          \" 9L       (!FP       @"
-    "&; ,S,S,S/C7L S,S,S,^->P       @&;       \" 9L .    .     8    (    !@         %    \"     $    !     0         ) "
-    "   \"               #@   #@    &    \"     8         !0    @    !     0    $         \"0    @               X    X"
-    "    !@    @    &          4    (     0    $    !          D    (            \\/\\.    .     8    (    !@         %"
-    "    \"     $    !     0         )    \"            /!_#@   $@    &    \"     8         !0    @    !     P    $    "
-    "     \"0   !@   \"J\\=)-8A#0/ZKQTDUB$. _JO'236(0X#\\.    ,     8    (    !          %    \"     $    !     0      "
-    "   0  $ +0    X    X    !@    @    &          4    (     0    $    !          D    (            ^#\\.    .     8  "
-    "  (    !          %    \"     $    (     0         0    \"    %-I9VYA;\" V#@   #@    &    \"     8         !0    @"
-    "    !     0    $         \"0    @           #P/PX   \"P 0  !@    @    \"          4    (     0    $    !          "
-    "4 !  +     0   #<   !C:&%N;F5L<P   'E,:6T         ;&%B96Q0;W,   !L86)E;$@      &QA8F5L4&%T8V@   X    X    !@    @ "
-    "   &          4    (     0    $    !          D    (            \\#\\.    0     8    (    !@         %    \"     $"
-    "    \"     0         )    $           P&?       # 7, .    ,     8    (    !          %    \"     $    \"     0    "
-    "     0  ( 5$P   X    X    !@    @    &          4    (     0    $    !          D    (        \"  RM$ .    .     8"
-    "    (    !@         %    \"     $    !     0         )    \"        !@!>;- #@   &@\"   &    \"     (         !0   "
-    " @    !     0    $         !0 $  X    !    8@   &1I<W!4:6UE        9&ES<$UO9&4       !M:6Y4:6UE         &UA>%1I;64"
-    "         869T97)&:6YA;%-T<@!S86UP;&54:6UE     'IE<F]#<F]S<P              #@   $     &    \"     8         !0    @ "
-    "   !     @    $         \"0   !                       $1 #@   #@    &    \"     8         !0    @    !     0    $ "
-    "        \"0    @           #P/PX    X    !@    @    &          4    (     0    $    !          D    (             "
-    "  .    .     8    (    !@         %    \"     $    !     0         )    \"            $1 #@   $     &    \"     0 "
-    "        !0    @    !    \"P    $         $     L   !%>'1R87!O;&%T90      #@   #@    &    \"     8         !0    @ "
-    "   !     0    $         \"0    @               X    P    !@    @    $          4    (     0    (    !         !   "
-    "@!O;@  #@   ( !   &    \"     (         !0    @    !     0    $         !0 $  X    !    .    &%C=&EV941I<W!)9'@ =&"
-    "EM95)A;F=E      !N86UE             &1I<W!L87E286YG90  #@   #@    &    \"     8         !0    @    !     0    $    "
-    "     \"0    @           #P/PX   !     !@    @    &          4    (     0    (    !          D    0                "
-    "      !$0 X    X    !@    @    $          4    (     0    <    !         !     '    1W)O=7 @,0 .    0     8    (  "
-    "  !@         %    \"     $    \"     0         )    $                       1$ .    .     8    (    !@         %  "
-    "  \"     $    !     0         )    \"            / _#@   #@    &    \"     8         !0    @    !     0    $      "
-    "   \"0    @               X   \"     !@    @    1          $          0 $ $U#3U,!    \"    %-I9U-U:71E#@   $@    &"
-    "    \"     T         !0    @    &     0    $         !@   !@       #= @    $    !     0    ,    .    6 H   8    ( "
-    "   \"0         %    \"     $    H\"@   0         \"    * H    !24T     #@   (@)   &    \"     (         !0    @   "
-    " !     0    $         !0 $  4    !    !0   $U#3U,     #@   $ )   &    \"    !$          0         !  0 34-/4P$    "
-    "-    1FEL95=R87!P97)?7P    X     \"0  !@    @    !          4    (    \"     $    !          X    H @  !@    @    "
-    ")          4    (    ^ $   $    !          (   #X 0   @    P   \"8    V    -@   !H 0  R $  /@!             $=R;W5P"
-    "<P!3:6=N86QS $YA;64 6$1A=&$ 641A=&$ 4VEG4W5I=&53:6=N86P 57-E<D1A=&$ 4VEG4W5I=&5'<F]U< !!8W1I=F53:6=N86P 4VEG4W5I=&"
-    "4 365T:&]D $%C=&EV94=R;W5P                              8                    (                    \"@             "
-    "                                  P                    $    %     @                    (    #     0               "
-    "     ,    !     0                    0    \"     @                    4    $               !     0    $    $     0"
-    "    (    !     P    ,    #     0         $     0    $    %     0    (                                             "
-    "                                            #@         .    .     8    (    !          %    \"     $    (     0   "
-    "      0    \"    %-I9VYA;\" V#@   &@    &    \"     8         !0    @    !    !P    $         \"0   #@            "
-    "          !1         )$         N0        #E         /D        !$0 X   !H    !@    @    &          4    (     0   "
-    " <    !          D    X          \" 9L       (!FP       @&; ,S,S,S/C7L S,S,S,^->P       @&;       \" 9L .    2    "
-    " 8    (    #0         %    \"     8    !     0         &    &        -T\"     0    $    #     0    X   !(    !@   "
-    " @    -          4    (    !@    $    !          8    8        W0(    !     0    (    \"    #@   -@$   &    \"    "
-    " $         !0    @    $     0    $         #@   #@    &    \"     (         !0    @    !          $         !0 $  "
-    "$    !          X   !  0  !@    @    \"          4    (     0    $    !          4 !  )     0   \"0   !.86UE      "
-    "!81&%T80    !91&%T80    !5<V5R1&%T80      #@   #     &    \"     0         !0    @               $         $      "
-    "    .    ,     8    (    !@         %    \"                0         )          X    P    !@    @    &          4 "
-    "   (               !          D         #@   #     &    \"     8         !0    @               $         \"0      "
-    "   .    : $   8    (     @         %    \"     $    !     0         %  0 #0    $    T    3F%M90           %-I9VYA;"
-    "',       !!8W1I=F53:6=N86P 57-E<D1A=&$            .    ,     8    (    !          %    \"                0        "
-    " 0          X   !(    !@    @    -          4    (    !@    $    !          8    8        W0(    !     0    0    !"
-    "    #@   #     &    \"     8         !0    @               $         \"0         .    ,     8    (    !@         %"
-    "    \"                0         )          X   \"P 0  !@    @    \"          4    (     0    $    !          4 !  "
-    ",     0   #P   !.86UE          !-971H;V0       !'<F]U<',       !!8W1I=F5'<F]U< !5<V5R1&%T80          #@   #     & "
-    "   \"     0         !0    @               $         $          .    ,     8    (    !          %    \"            "
-    "    0         0          X   !(    !@    @    -          4    (    !@    $    !          8    8        W0(    !   "
-    "  0    4    \"    #@   #@    &    \"     8         !0    @    !     0    $         \"0    @           #P/PX    P  "
-    "  !@    @    &          4    (               !          D         #@   (@    &    \"     D         !0    @    !   "
-    " 6     $          @   %@      4E-      X   !(    !@    @    \"          4    (     0    $    !          4 !  %    "
-    " 0    4   !-0T]3      X         "
+    "  .    ,     8    (    !          %    \"     $    \"     0         0  ( ;VX   X   #@ @  !@    @    \"          4 "
+    "   (     0    $    !          4 !  *     0   %H   !S=&5P6       <W1E<%D      'E-:6X       !Y36%X        8V]L;W(   "
+    "   &QI;F53='EL90!L:6YE5VED=&@ ;&%B96P      &]U=$EN9&5X           .    .     8    (    !@         %    \"     $    "
+    "!     0         )    \"               #@   #@    &    \"     8         !0    @    !     0    $         \"0    @   "
+    "            X    X    !@    @    &          4    (     0    $    !          D    (            \\/\\.    .     8   "
+    " (    !@         %    \"     $    !     0         )    \"            /!_#@   $@    &    \"     8         !0    @  "
+    "  !     P    $         \"0   !@   \"J\\=)-8A#0/ZKQTDUB$. _JO'236(0X#\\.    ,     8    (    !          %    \"     "
+    "$    !     0         0  $ +0    X    X    !@    @    &          4    (     0    $    !          D    (            "
+    "^#\\.    .     8    (    !          %    \"     $    (     0         0    \"    %-I9VYA;\" V#@   #@    &    \"    "
+    " 8         !0    @    !     0    $         \"0    @           #P/PX   \"P 0  !@    @    \"          4    (     0  "
+    "  $    !          4 !  +     0   #<   !C:&%N;F5L<P   'E,:6T         ;&%B96Q0;W,   !L86)E;$@      &QA8F5L4&%T8V@   "
+    "X    X    !@    @    &          4    (     0    $    !          D    (            \\#\\.    0     8    (    !@    "
+    "     %    \"     $    \"     0         )    $           P&?       # 7, .    ,     8    (    !          %    \"    "
+    " $    \"     0         0  ( 5$P   X    X    !@    @    &          4    (     0    $    !          D    (        8 "
+    " $D$ .    .     8    (    !@         %    \"     $    !     0         )    \"        ( %0(I #@   &@\"   &    \"   "
+    "  (         !0    @    !     0    $         !0 $  X    !    8@   &1I<W!4:6UE        9&ES<$UO9&4       !M:6Y4:6UE  "
+    "       &UA>%1I;64         869T97)&:6YA;%-T<@!S86UP;&54:6UE     'IE<F]#<F]S<P              #@   $     &    \"     8"
+    "         !0    @    !     @    $         \"0   !                       $1 #@   #@    &    \"     8         !0    @"
+    "    !     0    $         \"0    @           #P/PX    X    !@    @    &          4    (     0    $    !          D "
+    "   (               .    .     8    (    !@         %    \"     $    !     0         )    \"            $1 #@   $  "
+    "   &    \"     0         !0    @    !    \"P    $         $     L   !%>'1R87!O;&%T90      #@   #@    &    \"     8"
+    "         !0    @    !     0    $         \"0    @               X    P    !@    @    $          4    (     0    ( "
+    "   !         !   @!O;@  #@   ( !   &    \"     (         !0    @    !     0    $         !0 $  X    !    .    &%C="
+    "&EV941I<W!)9'@ =&EM95)A;F=E      !N86UE             &1I<W!L87E286YG90  #@   #@    &    \"     8         !0    @   "
+    " !     0    $         \"0    @           #P/PX   !     !@    @    &          4    (     0    (    !          D    "
+    "0                      !$0 X    X    !@    @    $          4    (     0    <    !         !     '    1W)O=7 @,0 . "
+    "   0     8    (    !@         %    \"     $    \"     0         )    $                       1$ .    .     8    ( "
+    "   !@         %    \"     $    !     0         )    \"            / _#@   #@    &    \"     8         !0    @    !"
+    "     0    $         \"0    @               X   \"     !@    @    1          $          0 $ $U#3U,!    \"    %-I9U-"
+    "U:71E#@   $@    &    \"     T         !0    @    &     0    $         !@   !@       #= @    $    !     0    ,    ."
+    "    6 H   8    (    \"0         %    \"     $    H\"@   0         \"    * H    !24T     #@   (@)   &    \"     (  "
+    "       !0    @    !     0    $         !0 $  4    !    !0   $U#3U,     #@   $ )   &    \"    !$          0        "
+    " !  0 34-/4P$    -    1FEL95=R87!P97)?7P    X     \"0  !@    @    !          4    (    \"     $    !          X   "
+    " H @  !@    @    )          4    (    ^ $   $    !          (   #X 0   @    P   \"8    V    -@   !H 0  R $  /@!   "
+    "          $=R;W5P<P!3:6=N86QS $YA;64 6$1A=&$ 641A=&$ 4VEG4W5I=&53:6=N86P 57-E<D1A=&$ 4VEG4W5I=&5'<F]U< !!8W1I=F53:"
+    "6=N86P 4VEG4W5I=&4 365T:&]D $%C=&EV94=R;W5P                              8                    (                   "
+    " \"@                                               P                    $    %     @                    (    #    "
+    " 0                    ,    !     0                    0    \"     @                    4    $               !     "
+    "0    $    $     0    (    !     P    ,    #     0         $     0    $    %     0    (                            "
+    "                                                             #@         .    .     8    (    !          %    \"   "
+    "  $    (     0         0    \"    %-I9VYA;\" V#@   &@    &    \"     8         !0    @    !    !P    $         \"0"
+    "   #@                      !1         )$         N0        #E         /D        !$0 X   !H    !@    @    &        "
+    "  4    (     0    <    !          D    X          !@9L       &!FP       8&; ,S,S,S/C7L S,S,S,^->P       8&;       "
+    "!@9L .    2     8    (    #0         %    \"     8    !     0         &    &        -T\"     0    $    #     0    "
+    "X   !(    !@    @    -          4    (    !@    $    !          8    8        W0(    !     0    (    \"    #@   -@"
+    "$   &    \"     $         !0    @    $     0    $         #@   #@    &    \"     (         !0    @    !          $"
+    "         !0 $  $    !          X   !  0  !@    @    \"          4    (     0    $    !          4 !  )     0   \"0"
+    "   !.86UE      !81&%T80    !91&%T80    !5<V5R1&%T80      #@   #     &    \"     0         !0    @               $ "
+    "        $          .    ,     8    (    !@         %    \"                0         )          X    P    !@    @  "
+    "  &          4    (               !          D         #@   #     &    \"     8         !0    @               $   "
+    "      \"0         .    : $   8    (     @         %    \"     $    !     0         %  0 #0    $    T    3F%M90    "
+    "       %-I9VYA;',       !!8W1I=F53:6=N86P 57-E<D1A=&$            .    ,     8    (    !          %    \"          "
+    "      0         0          X   !(    !@    @    -          4    (    !@    $    !          8    8        W0(    ! "
+    "    0    0    !    #@   #     &    \"     8         !0    @               $         \"0         .    ,     8    ( "
+    "   !@         %    \"                0         )          X   \"P 0  !@    @    \"          4    (     0    $    !"
+    "          4 !  ,     0   #P   !.86UE          !-971H;V0       !'<F]U<',       !!8W1I=F5'<F]U< !5<V5R1&%T80        "
+    "  #@   #     &    \"     0         !0    @               $         $          .    ,     8    (    !          %   "
+    " \"                0         0          X   !(    !@    @    -          4    (    !@    $    !          8    8    "
+    "    W0(    !     0    4    \"    #@   #@    &    \"     8         !0    @    !     0    $         \"0    @        "
+    "   #P/PX    P    !@    @    &          4    (               !          D         #@   (@    &    \"     D         "
+    "!0    @    !    6     $          @   %@      4E-      X   !(    !@    @    \"          4    (     0    $    !     "
+    "     4 !  %     0    4   !-0T]3      X         "
   }
   DataRecord {
     Tag			    DataTag7
@@ -5522,48 +5515,48 @@ MatData {
     "$    !          4 !  +     0   #<   !C:&%N;F5L<P   'E,:6T         ;&%B96Q0;W,   !L86)E;$@      &QA8F5L4&%T8V@   X "
     "   X    !@    @    &          4    (     0    $    !          D    (            \\#\\.    0     8    (    !@      "
     "   %    \"     $    \"     0         )    $            \"3         5$ .    ,     8    (    !          %    \"     "
-    "$    \"     0         0  ( 5$P   X    X    !@    @    &          4    (     0    $    !          D    (        H*-"
-    "FKD .    .     8    (    !@         %    \"     $    !     0         )    \"        +\"C]*Q #@   &@\"   &    \"   "
-    "  (         !0    @    !     0    $         !0 $  X    !    8@   &1I<W!4:6UE        9&ES<$UO9&4       !M:6Y4:6UE  "
-    "       &UA>%1I;64         869T97)&:6YA;%-T<@!S86UP;&54:6UE     'IE<F]#<F]S<P              #@   $     &    \"     8"
-    "         !0    @    !     @    $         \"0   !                       $1 #@   #@    &    \"     8         !0    @"
-    "    !     0    $         \"0    @           #P/PX    X    !@    @    &          4    (     0    $    !          D "
-    "   (               .    .     8    (    !@         %    \"     $    !     0         )    \"            $1 #@   $  "
-    "   &    \"     0         !0    @    !    \"P    $         $     L   !%>'1R87!O;&%T90      #@   #@    &    \"     8"
-    "         !0    @    !     0    $         \"0    @               X    P    !@    @    $          4    (     0    ( "
-    "   !         !   @!O;@  #@   ( !   &    \"     (         !0    @    !     0    $         !0 $  X    !    .    &%C="
-    "&EV941I<W!)9'@ =&EM95)A;F=E      !N86UE             &1I<W!L87E286YG90  #@   #@    &    \"     8         !0    @   "
-    " !     0    $         \"0    @           #P/PX   !     !@    @    &          4    (     0    (    !          D    "
-    "0                      !$0 X    X    !@    @    $          4    (     0    <    !         !     '    1W)O=7 @,0 . "
-    "   0     8    (    !@         %    \"     $    \"     0         )    $                       1$ .    .     8    ( "
-    "   !@         %    \"     $    !     0         )    \"            / _#@   #@    &    \"     8         !0    @    !"
-    "     0    $         \"0    @               X   \"     !@    @    1          $          0 $ $U#3U,!    \"    %-I9U-"
-    "U:71E#@   $@    &    \"     T         !0    @    &     0    $         !@   !@       #= @    $    !     0    ,    ."
-    "    > H   8    (    \"0         %    \"     $   !(\"@   0         \"    2 H    !24T     #@   *@)   &    \"     (  "
-    "       !0    @    !     0    $         !0 $  4    !    !0   $U#3U,     #@   & )   &    \"    !$          0        "
-    " !  0 34-/4P$    -    1FEL95=R87!P97)?7P    X    @\"0  !@    @    !          4    (    \"     $    !          X   "
-    " H @  !@    @    )          4    (    ^ $   $    !          (   #X 0   @    P   \"8    V    -@   !H 0  R $  /@!   "
-    "          $=R;W5P<P!3:6=N86QS $YA;64 6$1A=&$ 641A=&$ 4VEG4W5I=&53:6=N86P 57-E<D1A=&$ 4VEG4W5I=&5'<F]U< !!8W1I=F53:"
-    "6=N86P 4VEG4W5I=&4 365T:&]D $%C=&EV94=R;W5P                              8                    (                   "
-    " \"@                                               P                    $    %     @                    (    #    "
-    " 0                    ,    !     0                    0    \"     @                    4    $               !     "
-    "0    $    $     0    (    !     P    ,    #     0         $     0    $    %     0    (                            "
-    "                                                             #@         .    .     8    (    !          %    \"   "
-    "  $    (     0         0    \"    %-I9VYA;\" R#@   '@    &    \"     8         !0    @    !    \"0    $         \""
-    "0   $@                      !1         )$         N0        #1         .4         ^0       @$%         1$ .    >  "
-    "   8    (    !@         %    \"     $    )     0         )    2                                (!10$CA>A2N5U% 2.%Z"
-    "%*Y744!(X7H4KE=10       @%%                       X   !(    !@    @    -          4    (    !@    $    !          "
-    "8    8        W0(    !     0    ,    !    #@   $@    &    \"     T         !0    @    &     0    $         !@   !@"
-    "       #= @    $    !     @    (    .    V 0   8    (     0         %    \"     0    !     0         .    .     8 "
-    "   (     @         %    \"     $          0         %  0  0    $         #@   $ !   &    \"     (         !0    @ "
-    "   !     0    $         !0 $  D    !    )    $YA;64      %A$871A     %E$871A     %5S97)$871A       .    ,     8   "
-    " (    !          %    \"                0         0          X    P    !@    @    &          4    (               "
-    "!          D         #@   #     &    \"     8         !0    @               $         \"0         .    ,     8    "
-    "(    !@         %    \"                0         )          X   !H 0  !@    @    \"          4    (     0    $    "
-    "!          4 !  -     0   #0   !.86UE            4VEG;F%L<P       $%C=&EV95-I9VYA; !5<V5R1&%T80            X    P "
-    "   !@    @    $          4    (               !         !          #@   $@    &    \"     T         !0    @    &  "
-    "   0    $         !@   !@       #= @    $    !    !     $    .    ,     8    (    !@         %    \"              "
-    "  0         )          X    P    !@    @    &          4    (               !          D         #@   + !   &    \""
+    "$    \"     0         0  ( 5$P   X    X    !@    @    &          4    (     0    $    !          D    (        , &"
+    "UL4 .    .     8    (    !@         %    \"     $    !     0         )    \"        ( !_+! #@   &@\"   &    \"    "
+    " (         !0    @    !     0    $         !0 $  X    !    8@   &1I<W!4:6UE        9&ES<$UO9&4       !M:6Y4:6UE   "
+    "      &UA>%1I;64         869T97)&:6YA;%-T<@!S86UP;&54:6UE     'IE<F]#<F]S<P              #@   $     &    \"     8 "
+    "        !0    @    !     @    $         \"0   !                       $1 #@   #@    &    \"     8         !0    @ "
+    "   !     0    $         \"0    @           #P/PX    X    !@    @    &          4    (     0    $    !          D  "
+    "  (               .    .     8    (    !@         %    \"     $    !     0         )    \"            $1 #@   $   "
+    "  &    \"     0         !0    @    !    \"P    $         $     L   !%>'1R87!O;&%T90      #@   #@    &    \"     8 "
+    "        !0    @    !     0    $         \"0    @               X    P    !@    @    $          4    (     0    (  "
+    "  !         !   @!O;@  #@   ( !   &    \"     (         !0    @    !     0    $         !0 $  X    !    .    &%C=&"
+    "EV941I<W!)9'@ =&EM95)A;F=E      !N86UE             &1I<W!L87E286YG90  #@   #@    &    \"     8         !0    @    "
+    "!     0    $         \"0    @           #P/PX   !     !@    @    &          4    (     0    (    !          D    0"
+    "                      !$0 X    X    !@    @    $          4    (     0    <    !         !     '    1W)O=7 @,0 .  "
+    "  0     8    (    !@         %    \"     $    \"     0         )    $                       1$ .    .     8    (  "
+    "  !@         %    \"     $    !     0         )    \"            / _#@   #@    &    \"     8         !0    @    ! "
+    "    0    $         \"0    @               X   \"     !@    @    1          $          0 $ $U#3U,!    \"    %-I9U-U"
+    ":71E#@   $@    &    \"     T         !0    @    &     0    $         !@   !@       #= @    $    !     0    ,    . "
+    "   > H   8    (    \"0         %    \"     $   !(\"@   0         \"    2 H    !24T     #@   *@)   &    \"     (   "
+    "      !0    @    !     0    $         !0 $  4    !    !0   $U#3U,     #@   & )   &    \"    !$          0         "
+    "!  0 34-/4P$    -    1FEL95=R87!P97)?7P    X    @\"0  !@    @    !          4    (    \"     $    !          X    "
+    "H @  !@    @    )          4    (    ^ $   $    !          (   #X 0   @    P   \"8    V    -@   !H 0  R $  /@!    "
+    "         $=R;W5P<P!3:6=N86QS $YA;64 6$1A=&$ 641A=&$ 4VEG4W5I=&53:6=N86P 57-E<D1A=&$ 4VEG4W5I=&5'<F]U< !!8W1I=F53:6"
+    "=N86P 4VEG4W5I=&4 365T:&]D $%C=&EV94=R;W5P                              8                    (                    "
+    "\"@                                               P                    $    %     @                    (    #     "
+    "0                    ,    !     0                    0    \"     @                    4    $               !     0"
+    "    $    $     0    (    !     P    ,    #     0         $     0    $    %     0    (                             "
+    "                                                            #@         .    .     8    (    !          %    \"    "
+    " $    (     0         0    \"    %-I9VYA;\" R#@   '@    &    \"     8         !0    @    !    \"0    $         \"0"
+    "   $@                      !1         )$         N0        #1         .4         ^0       @$%         1$ .    >   "
+    "  8    (    !@         %    \"     $    )     0         )    2                                (!10$CA>A2N5U% 2.%Z%"
+    "*Y744!(X7H4KE=10       @%%                       X   !(    !@    @    -          4    (    !@    $    !          8"
+    "    8        W0(    !     0    ,    !    #@   $@    &    \"     T         !0    @    &     0    $         !@   !@ "
+    "      #= @    $    !     @    (    .    V 0   8    (     0         %    \"     0    !     0         .    .     8  "
+    "  (     @         %    \"     $          0         %  0  0    $         #@   $ !   &    \"     (         !0    @  "
+    "  !     0    $         !0 $  D    !    )    $YA;64      %A$871A     %E$871A     %5S97)$871A       .    ,     8    "
+    "(    !          %    \"                0         0          X    P    !@    @    &          4    (               !"
+    "          D         #@   #     &    \"     8         !0    @               $         \"0         .    ,     8    ("
+    "    !@         %    \"                0         )          X   !H 0  !@    @    \"          4    (     0    $    !"
+    "          4 !  -     0   #0   !.86UE            4VEG;F%L<P       $%C=&EV95-I9VYA; !5<V5R1&%T80            X    P  "
+    "  !@    @    $          4    (               !         !          #@   $@    &    \"     T         !0    @    &   "
+    "  0    $         !@   !@       #= @    $    !    !     $    .    ,     8    (    !@         %    \"               "
+    " 0         )          X    P    !@    @    &          4    (               !          D         #@   + !   &    \""
     "     (         !0    @    !     0    $         !0 $  P    !    /    $YA;64          $UE=&AO9        $=R;W5P<P     "
     "  $%C=&EV94=R;W5P %5S97)$871A           .    ,     8    (    !          %    \"                0         0        "
     "  X    P    !@    @    $          4    (               !         !          #@   $@    &    \"     T         !0   "
